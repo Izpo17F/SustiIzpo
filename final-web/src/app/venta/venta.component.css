@@ -1,0 +1,35 @@
+.container {
+  max-width: 600px;
+  margin: 20px auto;
+  padding: 20px;
+}
+
+.resultado {
+  margin-top: 20px;
+}
+
+mat-form-field {
+  width: 100%;
+}
+
+
+button {
+  display: block;
+  margin-bottom: 2rem;
+}
+
+.flex{
+  display: flex;
+}
+.col{
+  flex-direction: column;
+}
+.centrado{
+  justify-content: center;
+  align-items: center;
+}
+.espacidado
+{
+  margin-left: 5rem;
+  padding: 0 5rem;
+}

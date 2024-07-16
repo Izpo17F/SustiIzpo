@@ -1,0 +1,56 @@
+<div class="container flex col">
+  <mat-card class="flex col centrado">
+    <h2>Registrar Venta</h2>
+    <form [formGroup]="ventaForm" (ngSubmit)="registrarVenta()">
+      <mat-form-field appearance="fill">
+        <mat-label>Nombre del Producto</mat-label>
+        <input matInput formControlName="nombreProducto">
+        <mat-error *ngIf="ventaForm.get('nombreProducto')?.hasError('required')">
+          El nombre del producto es requerido.
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Cantidad</mat-label>
+        <input matInput type="number" formControlName="cantidad">
+        <mat-error *ngIf="ventaForm.get('cantidad')?.hasError('required')">
+          La cantidad es requerida.
+        </mat-error>
+        <mat-error *ngIf="ventaForm.get('cantidad')?.hasError('min')">
+          La cantidad debe ser mayor que 0.
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Precio Unitario</mat-label>
+        <input matInput type="number" formControlName="precioUnitario">
+        <mat-error *ngIf="ventaForm.get('precioUnitario')?.hasError('required')">
+          El precio unitario es requerido.
+        </mat-error>
+        <mat-error *ngIf="ventaForm.get('precioUnitario')?.hasError('min')">
+          El precio unitario debe ser mayor que 0.01.
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Fecha de Venta</mat-label>
+        <input matInput type="date" formControlName="fechaVenta">
+        <mat-error *ngIf="ventaForm.get('fechaVenta')?.hasError('required')">
+          La fecha de venta es requerida.
+        </mat-error>
+      </mat-form-field>
+        <div class="boton flex col centrado">
+            <button mat-raised-button color="primary" type="submit" [disabled]="ventaForm.invalid">Registrar Venta</button>
+        </div>
+    </form>
+  </mat-card>
+<mat-card class="flex espaciado">
+  <div *ngIf="resultado" class=" flex col centrado resultado espaciado">
+    <h2>Resultados de la Venta</h2>
+    <p>Monto Total: {{ resultado.montoTotal }}</p>
+    <p>Descuento Aplicado: {{ resultado.descuentoAplicado }}</p>
+    <p>Monto Total con Descuento: {{ resultado.montoTotalConDescuento }}</p>
+  </div>
+</mat-card>
+
+</div>
